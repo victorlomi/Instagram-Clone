@@ -3,5 +3,46 @@
     border-bottom: 1px solid #dfdfdf;
 }
 
+#instagram-title {
+    font-family: 'Lobster', cursive;
+    padding-left: 180px;
+    color: #222;
+    font-size: 25px;
+}
 
+.nav-signup-link {
+    margin-left: auto;
+}
 
+#user-profile {
+    padding-right: 180px;
+}
+
+#user-image {
+    stroke: #FFF;
+    background-color: #d3d3d3;
+    border-radius: 50%;
+    border: 1px solid #000;
+    fill: #FFF;
+    width: 26px;
+    height: 26px;
+}
+
+.navbar-link {
+    padding-right: 20px; 
+}
+
+.nav-search {
+    margin-left: auto;
+}
+
+#search-box {
+    border: 1px solid #d3d3d3;
+    border-radius: 2px;
+    text-align: center;
+    background-color: #f7f7f7;
+}
+
+#search-box:focus {
+    outline: none;
+}
