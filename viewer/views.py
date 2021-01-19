@@ -7,8 +7,4 @@ def homepage(request):
 
 
 def signup(request):
-    return HttpResponse("signup")
-
-
-def login(request):
-    return HttpResponse("login")
+    return render(request, 'registration/signup.html') 
