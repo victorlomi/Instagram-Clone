@@ -46,3 +46,7 @@
 #search-box:focus {
     outline: none;
 }
+
+#profile-container {
+    margin: 30px 180px 0;
+}

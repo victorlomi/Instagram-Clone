@@ -9,7 +9,10 @@ def homepage(request):
 
 
 def profile(request):
-    return render(request, "profile.html")
+    if request.user.is_authenticated:
+        return render(request, "profile.html")
+    else:
+        return redirect("homepage") 
 
 
 def signup(request):
