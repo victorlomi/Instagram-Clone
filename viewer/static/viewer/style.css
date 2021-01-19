@@ -50,3 +50,18 @@
 #profile-container {
     margin: 30px 180px 0;
 }
+
+#profile-image {
+    stroke: #FFF;
+    background-color: #d3d3d3;
+    border-radius: 50%;
+    border: 1px solid #000;
+    fill: #FFF;
+    width: 165px;
+    height: 165px;
+}
+
+#profile-description {
+    border-bottom: 1px solid #dfdfdf;
+}
+
