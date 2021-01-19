@@ -8,6 +8,10 @@ def homepage(request):
     return render(request, 'index.html') 
 
 
+def profile(request):
+    return render(request, "profile.html")
+
+
 def signup(request):
     if request.user.is_authenticated:
         return redirect('homepage')
