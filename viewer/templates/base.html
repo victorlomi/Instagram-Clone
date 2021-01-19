@@ -6,6 +6,8 @@
     <title>Instagram</title>
     {% block styles %}
         {% bootstrap_css %}
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'viewer/style.css' %}" media="all">
     {% endblock %}
 </head>
 <body>

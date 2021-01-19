@@ -1,10 +1,5 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <a href="{% url 'signup' %}">Sign Up</a>
-    {% if user.is_authenticated %}
-        <a href="{% url 'logout' %}">Log Out</a>
-    {% else %}
-        <a href="{% url 'login' %}">Log In</a>
-    {% endif %}
+
 {% endblock %}
