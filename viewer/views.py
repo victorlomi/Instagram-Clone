@@ -6,6 +6,7 @@ from .models import Image, Profile, Following
 
 
 def homepage(request):
+    suggestions = Profile.objects.all()
     if request.user.is_authenticated:
         current_user = Profile.objects.filter(user__username=request.user.username)[0]
         followers = Following.objects.filter(following_profile_id=current_user.id)
@@ -13,20 +14,20 @@ def homepage(request):
         for follower in followers:
             follower_images = Image.objects.filter(profile__id=follower.profile_id.id)
             images.append(follower_images)
-        return render(request, "index.html", {"followers": followers, "images": images})
+        return render(request, "index.html", {"followers": followers, "images": images, "suggestions": suggestions})
     else:
         return render(request, 'index.html') 
 
 
-def profile(request):
-    if request.user.is_authenticated:
-        current_user = Profile.objects.filter(user__username=request.user.username)[0]
-        followers = Following.objects.filter(following_profile_id=current_user.id)
-        following = Following.objects.filter(profile_id=current_user.id)
-        posts = Image.objects.filter(profile=current_user.id)
-        return render(request, "profile.html", {"posts": posts, "following": following, "followers": followers})
-    else:
-        return HttpResponse("show another profile") 
+def profile(request, user):
+    current_user = Profile.objects.get(id=user)
+    followers = Following.objects.filter(following_profile_id=current_user.id)
+    following = Following.objects.filter(profile_id=current_user.id)
+    posts = Image.objects.filter(profile=current_user.id)
+
+    # return HttpResponse(f"user id: {user}, user: {Profile.objects.get(id=user)}")
+
+    return render(request, "profile.html", {"posts": posts, "following": following, "followers": followers, "current_user": current_user})
 
 
 def post(request, post):
