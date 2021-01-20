@@ -1,5 +1,18 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
+    {% if not user.is_authenticated %} 
+        <div class="mt-5 d-flex flex-column align-items-center">
+            <h1>Please log in First</h1>
+        </div>
+    {% else %}
+        <div class="container">
+            <h1>Timeline</h1>
+            {% for user_images in images %}
+                {% for image in user_images %}
+                    <img src="{{ image.image.url }}">
+                {% endfor %}
+            {% endfor %}
+        </div>
+    {% endif %}
 {% endblock %}
