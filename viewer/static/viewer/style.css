@@ -67,10 +67,10 @@
 }
 
 .posts-container {
-   display: flex; 
-   flex-wrap: wrap;
-   justify-content: space-between;
-   margin-top: 15px;
+    display: flex; 
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 15px;
 }
 
 .post {
@@ -86,4 +86,25 @@
 #post-container img {
     width: 450px;
     height: 550px;
+}
+
+.timeline-container {
+    width: 1025px; 
+    margin: 30px 180px 0;
+    
+}
+
+.image-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.timeline-title {
+    margin-bottom: 30px;
+}
+
+.timeline-img {
+    width: 600px;
+    height: 480px;
+    margin-bottom: 25px;
 }

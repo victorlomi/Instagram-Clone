@@ -6,13 +6,18 @@
             <h1>Please log in First</h1>
         </div>
     {% else %}
-        <div class="container">
-            <h1>Timeline</h1>
-            {% for user_images in images %}
-                {% for image in user_images %}
-                    <img src="{{ image.image.url }}">
-                {% endfor %}
-            {% endfor %}
+        <div class="container timeline-container">
+            <div class="row image-column">
+                <div class="col-md-9">
+                    <h1 class="timeline-title">Timeline</h1>
+                    {% for user_images in images %}
+                        {% for image in user_images %}
+                            <img class="timeline-img" src="{{ image.image.url }}">
+                        {% endfor %}
+                    {% endfor %}
+                </div>
+                <div class="col-md-3"></div>
+            </div>
         </div>
     {% endif %}
 {% endblock %}
