@@ -13,9 +13,9 @@
             <div class="col-md-4">
                 <h1 class="profile-username">{{ user.username }}</h1>
                 <div class="stats mt-3 d-flex flex-row justify-content-between">
-                    <p class="posts">0 posts</p>
-                    <p class="followers">20 followers</p>
-                    <p class="following">88 following</p>
+                    <p class="posts">{{ posts | length }} posts</p>
+                    <p class="followers">{{ followers | length }} followers</p>
+                    <p class="following">{{ following | length }} following</p>
                 </div>
                 <button>Edit Profile</button>
             </div>

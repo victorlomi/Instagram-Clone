@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.forms import UserCreationForm
+from .models import Image, Profile, Following
 
 
 def homepage(request):
@@ -10,7 +11,11 @@ def homepage(request):
 
 def profile(request):
     if request.user.is_authenticated:
-        return render(request, "profile.html")
+        current_user = Profile.objects.filter(user__username=request.user.username)[0]
+        following = Following.objects.filter(following_profile_id=current_user.id)
+        followers = Following.objects.filter(profile_id=current_user.id)
+        posts = Image.objects.filter(profile=current_user.id)
+        return render(request, "profile.html", {"posts": posts, "following": following, "followers": followers})
     else:
         return redirect("homepage") 
 
@@ -21,7 +26,9 @@ def signup(request):
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
         if form.is_valid():
-            form.save()
+            user = form.save()
+            user.refresh_from_db()
+            user.save()
             username = form.cleaned_data.get('username')
             password = form.cleaned_data.get('password1')
             user = authenticate(username=username, password=password)
