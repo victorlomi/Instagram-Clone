@@ -12,7 +12,9 @@
                     <h1 class="timeline-title">Timeline</h1>
                     {% for user_images in images %}
                         {% for image in user_images %}
-                            <img class="timeline-img" src="{{ image.image.url }}">
+                            <a href="{% url 'post' post=image.id%}">
+                                <img class="timeline-img" src="{{ image.image.url }}">
+                            </a>
                         {% endfor %}
                     {% endfor %}
                 </div>
