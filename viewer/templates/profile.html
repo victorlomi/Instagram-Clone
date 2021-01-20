@@ -47,7 +47,9 @@
         <div class="row">
             <div class="col-md-12 posts-container">
                 {% for post in posts %}
-                    <img class="post" src="{{ post.image.url }}">	
+                    <a href="{% url 'post' post=post.id%}">
+                        <img class="post" src="{{ post.image.url }}">
+                    </a>
                 {% endfor %}
             </div>
         </div>

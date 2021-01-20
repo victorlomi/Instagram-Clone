@@ -20,6 +20,10 @@ def profile(request):
         return redirect("homepage") 
 
 
+def post(request, post):
+    return HttpResponse(f"here's your post: {post}") 
+
+
 def signup(request):
     if request.user.is_authenticated:
         return redirect('homepage')
