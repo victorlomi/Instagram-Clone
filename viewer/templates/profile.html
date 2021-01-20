@@ -22,9 +22,9 @@
             <div class="col-md-5"></div>
         </div>    
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-12 posts-container">
                 {% for post in posts %}
-                    <img src="{{ post.image.url }}">	
+                    <img class="post" src="{{ post.image.url }}">	
                 {% endfor %}
             </div>
         </div>
