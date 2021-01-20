@@ -26,10 +26,7 @@ def profile(request, user):
     following = Following.objects.filter(profile_id=current_user.id)
     posts = Image.objects.filter(profile=current_user.id)
 
-    # return HttpResponse(f"user id: {user}, user: {Profile.objects.get(id=user)}")
-
     return render(request, "profile.html", {"posts": posts, "following": following, "followers": followers, "current_user": current_user})
-
 
 def post(request, post):
     image = Image.objects.get(id=post)
