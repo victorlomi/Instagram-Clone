@@ -49,6 +49,7 @@
 
 #profile-container {
     margin: 30px 180px 0;
+    max-width: 1025px;
 }
 
 #profile-image {
