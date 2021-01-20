@@ -1,27 +1,31 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth import authenticate, login
+from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
+from django.core.exceptions import *
 from .models import Image, Profile, Following
 
 
 def homepage(request):
-    suggestions = Profile.objects.all()
     if request.user.is_authenticated:
-        current_user = Profile.objects.filter(user__username=request.user.username)[0]
+        current_user = User.objects.get(id=request.user.id)
         following = Following.objects.filter(profile_id=current_user.id)
+        print( Profile.objects.all())
+        print( User.objects.all())
+
         print(following)
         images = []
         for follow in following:
             follow_images = Image.objects.filter(profile__id=follow.following_profile_id.id)
             images.append(follow_images)
-        return render(request, "index.html", {"following": following, "images": images, "suggestions": suggestions})
+        return render(request, "index.html", {"following": following, "images": images})
     else:
         return render(request, 'index.html') 
 
 
 def profile(request, user):
-    current_user = Profile.objects.get(id=user)
+    current_user = User.objects.get(id=user.id)
     followers = Following.objects.filter(following_profile_id=current_user.id)
     following = Following.objects.filter(profile_id=current_user.id)
     posts = Image.objects.filter(profile=current_user.id)

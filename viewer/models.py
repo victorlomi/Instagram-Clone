@@ -16,6 +16,10 @@ class Profile(models.Model):
             Profile.objects.create(user=instance)
         instance.profile.save()
 
+    @receiver(post_save, sender=User)
+    def save_user_profile(sender, instance, **kwargs):
+        instance.profile.save()
+
 
 class Following(models.Model):
     profile_id = models.ForeignKey(Profile, related_name="following", on_delete=models.CASCADE)
