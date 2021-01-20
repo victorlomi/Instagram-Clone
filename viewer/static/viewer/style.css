@@ -78,3 +78,12 @@
     height: 290px;
     margin-top: 15px;
 }
+
+#post-container {
+    width: 1025px; 
+}
+
+#post-container img {
+    width: 450px;
+    height: 550px;
+}

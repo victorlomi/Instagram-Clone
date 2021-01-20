@@ -17,11 +17,12 @@ def profile(request):
         posts = Image.objects.filter(profile=current_user.id)
         return render(request, "profile.html", {"posts": posts, "following": following, "followers": followers})
     else:
-        return redirect("homepage") 
+        return HttpResponse("show another profile") 
 
 
 def post(request, post):
-    return HttpResponse(f"here's your post: {post}") 
+    image = Image.objects.get(id=post)
+    return render(request, "post.html", {"post": image}) 
 
 
 def signup(request):
