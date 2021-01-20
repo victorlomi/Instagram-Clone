@@ -4,8 +4,8 @@
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarText">
-        <form class="form-inline my-2 my-lg-0 nav-search" role="search" action="">
-            <input id="search-box" class="mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="tag">
+        <form class="form-inline my-2 my-lg-0 nav-search" role="search" action="{% url 'search_results' %}">
+            <input id="search-box" class="mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="username">
         </form>
         <span class="navbar-text navbar-link nav-signup-link">
             {% if not user.is_authenticated %}

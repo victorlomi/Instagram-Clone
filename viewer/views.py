@@ -9,12 +9,13 @@ def homepage(request):
     suggestions = Profile.objects.all()
     if request.user.is_authenticated:
         current_user = Profile.objects.filter(user__username=request.user.username)[0]
-        followers = Following.objects.filter(following_profile_id=current_user.id)
+        following = Following.objects.filter(profile_id=current_user.id)
+        print(following)
         images = []
-        for follower in followers:
-            follower_images = Image.objects.filter(profile__id=follower.profile_id.id)
-            images.append(follower_images)
-        return render(request, "index.html", {"followers": followers, "images": images, "suggestions": suggestions})
+        for follow in following:
+            follow_images = Image.objects.filter(profile__id=follow.following_profile_id.id)
+            images.append(follow_images)
+        return render(request, "index.html", {"following": following, "images": images, "suggestions": suggestions})
     else:
         return render(request, 'index.html') 
 
@@ -33,6 +34,18 @@ def profile(request, user):
 def post(request, post):
     image = Image.objects.get(id=post)
     return render(request, "post.html", {"post": image}) 
+
+
+def search_results(request):
+	#Search for a category or a location
+    if 'username' in request.GET and request.GET["username"]:
+        search_term = request.GET.get("username")
+        searched_usernames = Profile.objects.filter(user__username__icontains=search_term)
+        message = f"{search_term}"
+        return render(request, 'search.html',{"search_term": search_term,"searched_usernames": searched_usernames})
+    else:
+        message = "No Results"
+        return render(request, 'all-news/search.html',{"message":message})
 
 
 def signup(request):
