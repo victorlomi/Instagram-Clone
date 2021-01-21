@@ -27,10 +27,20 @@ class Following(models.Model):
 
 
 class Image(models.Model):
-	image = models.ImageField(upload_to="photos/")
-	name = models.CharField(max_length=60)
-	description = models.TextField()
-	profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
+    image = models.ImageField(upload_to="photos/")
+    name = models.CharField(max_length=60)
+    description = models.TextField()
+    profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
 
-	def __str__(self):
-		return self.name
+    def __str__(self):
+        return self.name
+
+    def save_image(self):
+        self.save()
+
+    def delete_image(self):
+        self.delete()
+
+    def update_caption(self, new_caption):
+        self.description = new_caption
+        self.save()

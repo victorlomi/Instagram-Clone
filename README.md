@@ -4,7 +4,7 @@ A web app where users can experience a instagram like experience where users can
 
 **Author: Victor Lominyo**
 
-**Live Link: https://instagrammmclone.herokuapp.com/**
+**Live Link: https://instagrammclone.herokuapp.com/**
 
 
 Technologies Used
