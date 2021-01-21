@@ -4,7 +4,7 @@ A web app where users can experience a instagram like experience where users can
 
 **Author: Victor Lominyo**
 
-**Live Link: https://todo.herokuapp.com/**
+**Live Link: https://instagrammmclone.herokuapp.com/**
 
 
 Technologies Used
@@ -18,13 +18,13 @@ Setup Instructions and Installation
 1. Clone the repository on to your computer
 
 ```
-$ git clone https://github.com/victorlomi/Instagram
+$ git clone https://github.com/victorlomi/Instagram-Clone
 ```
 
 2. Navigate to the project directory 
 
 ```
-$ cd Instagram
+$ cd Instagram-Clone
 ```
 
 3. Create virtual environment and activate it

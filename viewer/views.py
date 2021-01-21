@@ -25,7 +25,7 @@ def homepage(request):
 
 
 def profile(request, user):
-    current_user = User.objects.get(id=user.id)
+    current_user = User.objects.get(id=request.user.id)
     followers = Following.objects.filter(following_profile_id=current_user.id)
     following = Following.objects.filter(profile_id=current_user.id)
     posts = Image.objects.filter(profile=current_user.id)
