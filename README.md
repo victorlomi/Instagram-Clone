@@ -40,7 +40,16 @@ $ . venv/bin/activate
 $ pip install -r requirements.txt
 ```
 
-5. Run the development server
+5. Create a .env file with the following
+
+```
+SECRET_KEY=<key>
+DB_NAME=<db_name>
+USER=<db_user>
+PASSWORD=<db_password>
+```
+
+6. Run the development server
 
 ```
 $ python manage.py runserver
