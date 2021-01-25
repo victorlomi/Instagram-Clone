@@ -7,24 +7,17 @@ from django.core.exceptions import *
 from .models import Image, Profile, Following
 
 def homepage(request):
-    if request.user.is_authenticated:
-        current_user = User.objects.get(id=request.user.id)
-        following = Following.objects.filter(profile_id=current_user.id)
-        print( User.objects.all())
-
-        images = []
-        for follow in following:
-            follow_images = Image.objects.filter(profile__id=follow.following_profile_id.id)
-            images.append(follow_images)
-        return render(request, "index.html", {"following": following, "images": images})
-    else:
-        return render(request, 'index.html') 
+    # Homepage view displaying the user's timeline and suggestions for people they can 
+    # choose to follow
+    return render(request, 'index.html') 
 
 
-def profile(request, user):
-    current_user = User.objects.get(id=request.user.id)
-    followers = Following.objects.filter(following_profile_id=current_user.id)
-    following = Following.objects.filter(profile_id=current_user.id)
+def profile(request, user_id):
+    # Profile view that shows a user's page with information regarding followers,
+    # following, and their photos
+    current_user = User.objects.get(id=user_id)
+    followers = Following.objects.filter(following_id=current_user.id)
+    following = Following.objects.filter(follower_id=current_user.id)
     posts = Image.objects.filter(profile=current_user.id)
 
     return render(request, "profile.html", {"posts": posts, "following": following, "followers": followers, "current_user": current_user})
