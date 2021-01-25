@@ -6,7 +6,6 @@ from django.contrib.auth.forms import UserCreationForm
 from django.core.exceptions import *
 from .models import Image, Profile, Following
 
-
 def homepage(request):
     if request.user.is_authenticated:
         current_user = User.objects.get(id=request.user.id)
