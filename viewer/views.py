@@ -32,11 +32,11 @@ def post(request, post):
 
 
 def search_results(request):
-	#Search for a category or a location
+	# Search results view that searches for users and allows you to go to 
+    # their profile page
     if 'username' in request.GET and request.GET["username"]:
         search_term = request.GET.get("username")
-        searched_usernames = Profile.objects.filter(user__username__icontains=search_term)
-        message = f"{search_term}"
+        searched_usernames = User.objects.filter(username__icontains=search_term)
         return render(request, 'search.html',{"search_term": search_term,"searched_usernames": searched_usernames})
     else:
         message = "No Results"
