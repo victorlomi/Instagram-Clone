@@ -15,8 +15,7 @@
                     <p class="followers">{{ followers | length }} followers</p>
                     <p class="following">{{ following | length }} following</p>
                 </div>
-                <!-- Button trigger modal -->
-                {% if current_user.user.id == user.id %}
+                {% if current_user.id == user.id %}
                     <p></p>
                 {% else %}
                     <a href="#">Follow</a>
