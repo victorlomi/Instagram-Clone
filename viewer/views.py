@@ -18,7 +18,7 @@ def profile(request, user_id):
     current_user = User.objects.get(id=user_id)
     followers = Following.objects.filter(following_id=current_user.id)
     following = Following.objects.filter(follower_id=current_user.id)
-    posts = Image.objects.filter(profile=current_user.id)
+    posts = Image.objects.filter(user_id=current_user.id)
 
     return render(request, "profile.html", {"posts": posts, "following": following, "followers": followers, "current_user": current_user})
 
