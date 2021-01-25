@@ -24,8 +24,8 @@ class Profile(models.Model):
 
 
 class Following(models.Model):
-    profile_id = models.ForeignKey(Profile, related_name="following", on_delete=models.CASCADE)
-    following_profile_id = models.ForeignKey(Profile, related_name="followers", on_delete=models.CASCADE)
+    follower = models.ForeignKey(User, related_name="following", on_delete=models.CASCADE)
+    following = models.ForeignKey(User, related_name="followers", on_delete=models.CASCADE)
 
 
 class Image(models.Model):

@@ -10,10 +10,8 @@ def homepage(request):
     if request.user.is_authenticated:
         current_user = User.objects.get(id=request.user.id)
         following = Following.objects.filter(profile_id=current_user.id)
-        print( Profile.objects.all())
         print( User.objects.all())
 
-        print(following)
         images = []
         for follow in following:
             follow_images = Image.objects.filter(profile__id=follow.following_profile_id.id)
