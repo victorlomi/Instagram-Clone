@@ -9,7 +9,11 @@ from .models import Image, Profile, Following
 def homepage(request):
     # Homepage view displaying the user's timeline and suggestions for people they can 
     # choose to follow
-    return render(request, 'index.html') 
+    if request.user.is_authenticated:
+        users = User.objects.all()[:3]
+        return render(request, 'index.html', {"users": users}) 
+    else:
+        return render(request, 'index.html') 
 
 
 def profile(request, user_id):

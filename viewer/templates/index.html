@@ -20,8 +20,8 @@
                 </div>
                 <div class="col-md-3 d-flex flex-column">
                     <p class="suggestions-title">Suggestions For You</p>
-                    {% for suggested_user in suggestions %}
-                        <a class="suggestion" href="{% url 'profile' user=suggested_user.id %}">{{ suggested_user.user.username }}</a>
+                    {% for suggested_user in users %}
+                        <a class="suggestion" href="{% url 'profile' user_id=suggested_user.id %}">{{ suggested_user.username }}</a>
                     {% endfor %}
                 </div>
             </div>
