@@ -57,7 +57,21 @@ def profile_follow(request):
 
 
 def profile_unfollow(request):
-    return HttpResponse(request.POST)
+    unfollowed_user = User.objects.get(id=request.POST['id'])
+    follow = Following.objects.filter(follower_id=request.user.id, following_id=unfollowed_user.id)
+    follow.delete()
+
+    followers = Following.objects.filter(following_id=unfollowed_user.id)
+    following = Following.objects.filter(follower_id=unfollowed_user.id)
+    posts = Image.objects.filter(user_id=unfollowed_user.id)
+
+    individual_followers = []
+
+    for follower in followers:
+        individual_followers.append(follower.follower)
+
+
+    return render(request, "profile.html", {"posts": posts, "following": following, "followers": followers, "individual_followers": individual_followers,"current_user": unfollowed_user})
 
 
 def post(request, post):

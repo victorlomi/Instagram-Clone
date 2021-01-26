@@ -19,14 +19,12 @@
                     <p></p>
                 {% else %}
                     {% if user in individual_followers %}
-                        <p>add followe</p>
                         <form class='form' method='POST' action='{% url "unfollow" %}'>
                             {% csrf_token %}
                             <input type='hidden' name='id' value='{{ current_user.id }}'>
                             <button class="btn btn-danger">Unfollow</button>
                         </form>
                     {% else %}
-                        <p>remove followe</p>
                         <form class='form' method='POST' action='{% url "follow" %}'>
                             {% csrf_token %}
                             <input type='hidden' name='id' value='{{ current_user.id }}'>
