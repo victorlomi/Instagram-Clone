@@ -40,6 +40,10 @@ def profile_follow(request):
     return render(request, "profile.html", {"posts": posts, "following": following, "followers": followers, "current_user": followed_user})
 
 
+def profile_unfollow(request):
+    return HttpResponse(request.POST)
+
+
 def post(request, post):
     image = Image.objects.get(id=post)
     return render(request, "post.html", {"post": image}) 
