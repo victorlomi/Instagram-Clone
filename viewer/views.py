@@ -42,8 +42,12 @@ def profile_follow(request):
         following = Following.objects.filter(follower_id=followed_user.id)
         posts = Image.objects.filter(user_id=followed_user.id)
 
+        individual_followers = []
+
+        for follower in followers:
+            individual_followers.append(follower.follower)
         
-        return render(request, "profile.html", {"posts": posts, "following": following, "followers": followers, "individual_followers": individual_followers,"current_user": followed_user})
+        return redirect("profile", user_id=followed_user.id)
     else:
         follow = Following(follower=request.user, following=followed_user) 
         follow.save()
@@ -53,7 +57,7 @@ def profile_follow(request):
         following = Following.objects.filter(follower_id=followed_user.id)
         posts = Image.objects.filter(user_id=followed_user.id)
 
-        return render(request, "profile.html", {"posts": posts, "following": following, "followers": followers, "current_user": followed_user})
+        return redirect("profile", user_id=followed_user.id)
 
 
 def profile_unfollow(request):
