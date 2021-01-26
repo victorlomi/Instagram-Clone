@@ -33,9 +33,13 @@ class Image(models.Model):
     name = models.CharField(max_length=60)
     description = models.TextField()
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+    likes = models.ManyToManyField(User, related_name='post_like')
 
     def __str__(self):
         return self.name
+
+    def get_likes(self):
+        return self.likes.count()
 
     def save_image(self):
         self.save()

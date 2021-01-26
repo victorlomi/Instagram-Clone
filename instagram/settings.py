@@ -28,7 +28,8 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['instametoo.herokuapp.com', '127.0.0.1:5000']
+# ALLOWED_HOSTS = ['instametoo.herokuapp.com', '127.0.0.1:5000']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -90,7 +91,7 @@ DATABASES = {
     }
 }
 
-DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
+# DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
