@@ -14,8 +14,6 @@ def homepage(request):
     images = []
     for follow in following:
         images.append(Image.objects.filter(user_id=follow.following.id)) 
-        print(follow.following.id)
-        print(images)
 
     if request.user.is_authenticated:
         users = User.objects.all()[:3]
