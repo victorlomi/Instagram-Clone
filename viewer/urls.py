@@ -11,6 +11,7 @@ urlpatterns = [
     path('profile/<user_id>', views.profile, name="profile"),
     path('post/<post>', views.post, name="post"),
     path('search/', views.search_results, name="search_results"),
+    path('follow/', views.profile_follow, name='follow')
 ] 
 
 if settings.DEBUG:
