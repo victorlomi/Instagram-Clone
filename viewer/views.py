@@ -74,8 +74,9 @@ def profile_unfollow(request):
     for follower in followers:
         individual_followers.append(follower.follower)
 
+    
+    return redirect("profile", user_id=unfollowed_user.id)
 
-    return render(request, "profile.html", {"posts": posts, "following": following, "followers": followers, "individual_followers": individual_followers,"current_user": unfollowed_user})
 
 
 def post(request, post):
