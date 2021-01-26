@@ -18,28 +18,20 @@
                 {% if current_user.id == user.id %}
                     <p></p>
                 {% else %}
-                    {% if followers %}
-                        {% for follower in followers %}
-                        {% if follower.follower == user %}
-                            <form class='form' method='POST' action='{% url "unfollow" %}'>
-                                {% csrf_token %}
-                                <input type='hidden' name='id' value='{{ current_user.id }}'>
-                                <button class="btn btn-danger">Unfollow</button>
-                            </form>
-                        {% else %}
-                            <form class='form' method='POST' action='{% url "follow" %}'>
-                                {% csrf_token %}
-                                <input type='hidden' name='id' value='{{ current_user.id }}'>
-                                <button class="btn btn-primary">Follow</button>
-                            </form>
-                        {% endif %}
-                        {% endfor %}
+                    {% if user in individual_followers %}
+                        <p>add followe</p>
+                        <form class='form' method='POST' action='{% url "unfollow" %}'>
+                            {% csrf_token %}
+                            <input type='hidden' name='id' value='{{ current_user.id }}'>
+                            <button class="btn btn-danger">Unfollow</button>
+                        </form>
                     {% else %}
-                            <form class='form' method='POST' action='{% url "follow" %}'>
-                                {% csrf_token %}
-                                <input type='hidden' name='id' value='{{ current_user.id }}'>
-                                <button class="btn btn-primary">Follow</button>
-                            </form>
+                        <p>remove followe</p>
+                        <form class='form' method='POST' action='{% url "follow" %}'>
+                            {% csrf_token %}
+                            <input type='hidden' name='id' value='{{ current_user.id }}'>
+                            <button class="btn btn-primary">Follow</button>
+                        </form>
                     {% endif %}
                 {% endif %}
             </div>
