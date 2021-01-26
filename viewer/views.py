@@ -9,9 +9,17 @@ from .models import Image, Profile, Following
 def homepage(request):
     # Homepage view displaying the user's timeline and suggestions for people they can 
     # choose to follow
+    following = Following.objects.filter(follower_id=request.user.id)
+
+    images = []
+    for follow in following:
+        images.append(Image.objects.filter(user_id=follow.following.id)) 
+        print(follow.following.id)
+        print(images)
+
     if request.user.is_authenticated:
         users = User.objects.all()[:3]
-        return render(request, 'index.html', {"users": users}) 
+        return render(request, 'index.html', {"users": users, "images": images}) 
     else:
         return render(request, 'index.html') 
 
