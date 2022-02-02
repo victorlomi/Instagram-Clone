@@ -1,5 +1,5 @@
 # Gallery
-A web app where users can experience a instagram like experience where users can browse the images of their friends and can create relationships by following and getting followed others. The website has a clean and modern design.
+A web app where users can experience an instagram like experience. Users can browse the images of their friends and create relationships by following each other. The website has a clean and modern design.
 
 
 **Author: Victor Lominyo**
